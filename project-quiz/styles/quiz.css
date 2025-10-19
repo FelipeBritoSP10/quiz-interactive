@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.quiz-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  width: 400px;
+  text-align: center;
+  animation: popIn 0.4s ease-in-out;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+h2 {
+  margin: 10px 0;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.answer {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: #f8f8f8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.answer:hover {
+  background: #eef6ff;
+  border-color: #0077ff;
+}
+
+.selected {
+  background: #d6eaff;
+  border-color: #0077ff;
+}
+
+.correct {
+  background: #c7f9cc;
+  border-color: #2ecc71;
+}
+
+.wrong {
+  background: #ffb3b3;
+  border-color: #e74c3c;
+}
+
+button#confirm, a#reboot {
+  margin-top: 20px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #0077ff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+button#confirm:hover, a#reboot:hover {
+  background: #005ec2;
+}
+
+/* Fade entre perguntas */
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}

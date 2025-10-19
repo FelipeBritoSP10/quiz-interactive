@@ -1,136 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Estácio | Teste seus conhecimentos em Web</title>
-    <link rel="stylesheet" href="./styles/quiz.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Estácio | Teste seus conhecimentos</title>
+  <link rel="stylesheet" href="/styles/quiz.css">
 </head>
-
 <body>
-    <div class="quiz-container">
-        <h2 id="saudacao"></h2>
-        <div id="quiz-content">
-            <h3 id="pergunta"></h3>
-            <div id="opcoes"></div>
-            <button id="proxima" disabled>Próxima</button>
-        </div>
+  <div class="quiz-container">
+    <h2 id="saudacao"></h2>
 
-        <div id="resultado" style="display: none;">
-            <h3 id="mensagem-final"></h3>
-            <button id="reiniciar">Jogar Novamente</button>
-        </div>
-    </div>
+    <header>
+      <p id="question-counter">Questão 1 de 15 - HTML</p>
+      <p id="timerContainer"><span>⏱ Tempo restante:</span> <span id="time"></span></p>
+    </header>
 
-    <script>
-        const nome = localStorage.getItem('username');
-        const saudacao = document.getElementById('saudacao');
-        const perguntaEl = document.getElementById('pergunta');
-        const opcoesEl = document.getElementById('opcoes');
-        const proximaBtn = document.getElementById('proxima');
-        const resultadoEl = document.getElementById('resultado');
-        const mensagemFinal = document.getElementById('mensagem-final');
-        const reiniciarBtn = document.getElementById('reiniciar');
+    <main id="quiz-content" class="card">
+      <h2 id="question-title"></h2>
+      <p id="question-text" class="question-text"></p>
 
-        // Mostra saudação
-        saudacao.textContent = nome ? `Boa sorte, ${nome}! 🚀` : 'Bem-vindo ao Quiz!';
+      <div id="answers" class="answers"></div>
 
-        // Perguntas base
-        const perguntas = [
-            {
-                enunciado: "O que a tag <a> faz no HTML?",
-                opcoes: [
-                    { texto: "Cria um link", correta: true },
-                    { texto: "Adiciona uma imagem", correta: false },
-                    { texto: "Define um título", correta: false },
-                    { texto: "Insere um parágrafo", correta: false }
-                ]
-            },
-            {
-                enunciado: "Qual método exibe uma mensagem no console do navegador em JavaScript?",
-                opcoes: [
-                    { texto: "print()", correta: false },
-                    { texto: "alert()", correta: false },
-                    { texto: "console.log()", correta: true },
-                    { texto: "message()", correta: false }
-                ]
-            }
-        ];
+      <button id="confirm">Confirmar</button>
+    </main>
 
-        let indice = 0;
-        let pontuacao = 0;
+    <section id="result" style="display:none;">
+      <h3 id="finalMessage"></h3>
+      <a src="#" id="reboot">Ver relatório</a>
+    </section>
+  </div>
 
-        // Mostra a pergunta atual
-        function mostrarPergunta() {
-            const perguntaAtual = perguntas[indice];
-            perguntaEl.textContent = perguntaAtual.enunciado;
-            opcoesEl.innerHTML = '';
-            proximaBtn.disabled = true;
-
-            perguntaAtual.opcoes.forEach(opcao => {
-                const btn = document.createElement('button');
-                btn.textContent = opcao.texto;
-                btn.classList.add('opcao-btn');
-                btn.addEventListener('click', () => selecionarOpcao(btn, opcao.correta));
-                opcoesEl.appendChild(btn);
-            });
-        }
-
-        // Quando o usuário escolhe uma opção
-        function selecionarOpcao(botao, correta) {
-            const botoes = document.querySelectorAll('.opcao-btn');
-            botoes.forEach(b => b.disabled = true);
-
-            if (correta) {
-                botao.classList.add('correta');
-                pontuacao++;
-            } else {
-                botao.classList.add('errada');
-            }
-
-            proximaBtn.disabled = false;
-        }
-
-        // Avança para a próxima pergunta
-        proximaBtn.addEventListener('click', () => {
-            indice++;
-            if (indice < perguntas.length) {
-                mostrarPergunta();
-            } else {
-                mostrarResultado();
-            }
-        });
-
-        // Mostra o resultado final
-        function mostrarResultado() {
-            document.getElementById('quiz-content').style.display = 'none';
-            resultadoEl.style.display = 'block';
-
-            let mensagem = '';
-            if (pontuacao === perguntas.length) {
-                mensagem = `🎉 Parabéns, ${nome}! Você acertou todas as perguntas!`;
-            } else if (pontuacao === 1) {
-                mensagem = `👍 Bom trabalho, ${nome}! Você acertou 1 de ${perguntas.length}. Continue estudando!`;
-            } else {
-                mensagem = `📚 ${nome}, você acertou ${pontuacao} de ${perguntas.length}. Tente novamente!`;
-            }
-
-            mensagemFinal.textContent = mensagem;
-        }
-
-        // Reiniciar o quiz
-        reiniciarBtn.addEventListener('click', () => {
-            indice = 0;
-            pontuacao = 0;
-            resultadoEl.style.display = 'none';
-            document.getElementById('quiz-content').style.display = 'block';
-            mostrarPergunta();
-        });
-
-        // Inicia o quiz
-        mostrarPergunta();
-    </script>
+  <script src="/scripts/quiz.js"></script>
 </body>
-
 </html>
