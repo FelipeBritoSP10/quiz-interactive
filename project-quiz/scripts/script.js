@@ -23,5 +23,5 @@ startBtn.addEventListener('click', () => {
   localStorage.setItem('username', nome);
 
   // Redireciona para a tela do quiz (agora dentro da pasta pages)
-  window.location.href = './pages/quiz.html';
+  window.location.href = '../pages/quiz.html';
 });

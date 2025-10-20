@@ -1,18 +1,14 @@
-const nome = localStorage.getItem('username');
-const saudacao = document.getElementById('saudacao');
+const nome = localStorage.getItem("username");
+const saudacao = document.getElementById("saudacao");
 const questionTitle = document.getElementById("question-title");
 const questionText = document.getElementById("question-text");
 const answersContainer = document.getElementById("answers");
 const confirmBtn = document.getElementById("confirm");
 const counter = document.getElementById("question-counter");
-const resultadoEl = document.getElementById("result");
-const mensagemFinal = document.getElementById("finalMessage");
-const quizContent = document.getElementById("quiz-content");
 const timeEl = document.getElementById("time");
 
-saudacao.textContent = nome ? `Boa sorte, ${nome}! 🚀` : 'Bem-vindo ao Quiz!';
+saudacao.textContent = nome ? `Boa sorte, ${nome}! 🚀` : "Bem-vindo ao Quiz!";
 
-// Perguntas
 const questions = [
   {
     title: "Questão 01",
@@ -22,15 +18,15 @@ const questions = [
   },
   {
     title: "Questão 02",
-    text: "Qual das tags a seguir é usada para iniciar uma página HTML corretamente?",
-    options: ["<start>", "<body>", "<begin>", "<!DOCTYPE html>"],
-    correct: "<!DOCTYPE html>"
+    text: "O que significa a sigla CSS no desenvolvimento web?",
+    options: ["Computer Style Syntax", "Creative Styling System", "Cascading Style Sheets", "Content Structure Script"],
+    correct: "Cascading Style Sheets"
   },
   {
     title: "Questão 03",
-    text: "Em qual parte da estrutura HTML são colocadas as informações como título da página e links para estilos (CSS)?",
-    options: ["<footer>", "<body>", "<head>", "<section>"],
-    correct: "<head>"
+    text: "Qual propriedade é usada para alterar a fonte de um elemento?",
+    options: ["font-size", "font-weight", "font-family", "text-color"],
+    correct: "font-family"
   },
   {
     title: "Questão 04",
@@ -40,9 +36,9 @@ const questions = [
   },
   {
     title: "Questão 05",
-    text: "Em qual das linguagens abaixo se manipula o DOM (Document Object Model)?",
-    options: ["HTML", "CSS", " JavaScript", "SQL"],
-    correct: "JavaScript"
+    text: "Qual atributo HTML é usado para especificar o texto alternativo de uma imagem?",
+    options: ["src", "alt", " text", "title"],
+    correct: "alt"
   },
   {
     title: "Questão 06",
@@ -100,9 +96,9 @@ const questions = [
   },
   {
     title: "Questão 15",
-    text: "Qual propriedade define a posição de um elemento como fixa na página?",
-    options: ["position: static", "position: relative", "position: fixed", "position: absolute"],
-    correct: "position: fixed"
+    text: "Em JavaScript, qual palavra-chave cria uma variável que não pode ser reatribuída?",
+    options: ["var", "let", "const", "static"],
+    correct: "const"
   }
 ];
 
@@ -110,8 +106,8 @@ let currentQuestion = 0;
 let selectedAnswer = null;
 let score = 0;
 let timer;
+let userAnswers = []; // Salva índice da opção selecionada
 
-// Mostrar pergunta
 function loadQuestion() {
   clearInterval(timer);
   startTimer();
@@ -121,80 +117,57 @@ function loadQuestion() {
   questionText.textContent = q.text;
   counter.textContent = `Questão ${currentQuestion + 1} de ${questions.length} - Desenv. Web`;
 
-  answersContainer.innerHTML = ""; 
-  q.options.forEach(option => {
+  answersContainer.innerHTML = "";
+  q.options.forEach((option, index) => {
     const btn = document.createElement("button");
     btn.classList.add("answer");
     btn.textContent = option;
-    btn.addEventListener("click", () => selectAnswer(btn, option === q.correct));
+    btn.addEventListener("click", () => selectAnswer(btn, index));
     answersContainer.appendChild(btn);
   });
 
   selectedAnswer = null;
   confirmBtn.disabled = true;
-
-  // Ativa a transição
-  setTimeout(() => quizContent.classList.add("show"), 50);
 }
 
-function selectAnswer(btn, correct) {
+function selectAnswer(btn, index) {
   document.querySelectorAll(".answer").forEach(b => b.classList.remove("selected"));
   btn.classList.add("selected");
-  selectedAnswer = { btn, correct };
+  selectedAnswer = index;
   confirmBtn.disabled = false;
 }
 
 confirmBtn.addEventListener("click", () => {
-  if (!selectedAnswer) return;
+  if (selectedAnswer === null) return;
 
-  document.querySelectorAll(".answer").forEach(b => b.disabled = true);
+  const q = questions[currentQuestion];
+  userAnswers[currentQuestion] = selectedAnswer; // Salva índice da opção
 
-  if (selectedAnswer.correct) {
-    selectedAnswer.btn.classList.add("correct");
-    score++;
-  } else {
-    selectedAnswer.btn.classList.add("wrong");
-  }
+  document.querySelectorAll(".answer").forEach((b, i) => {
+    b.disabled = true;
+    if (i === selectedAnswer && i === q.options.indexOf(q.correct)) b.classList.add("correct");
+    else if (i === selectedAnswer) b.classList.add("wrong");
+    else if (i === q.options.indexOf(q.correct)) b.classList.add("correct");
+  });
 
-  // Faz o fade-out antes de carregar a próxima
-  quizContent.classList.remove("show");
+  if (selectedAnswer === q.options.indexOf(q.correct)) score++;
 
   setTimeout(() => {
     clearInterval(timer);
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-      loadQuestion();
-    } else {
-      mostrarResultado();
+    if (currentQuestion < questions.length) loadQuestion();
+    else {
+      localStorage.setItem("quizScore", score);
+      localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+      localStorage.setItem("questions", JSON.stringify(questions));
+      localStorage.setItem("quizFinished", true);
+      window.location.href = "./result.html";
     }
   }, 600);
 });
 
-function mostrarResultado() {
-  saudacao.style.display = "none";
-  quizContent.style.display = "none";
-  resultadoEl.style.display = "block";
-  counter.style.display = "none";
-  timeEl.style.display = "none";
-  timerContainer.style.display = "none"; 
-
-  localStorage.setItem("quizScore", score); // para usar na prox pag
-  let mensagem;
-  if (score === questions.length) {
-    mensagem = `🎉 Parabéns, ${nome || 'jogador'}! Você acertou todas as perguntas!`;
-  } else if (score <= 5) {
-    mensagem = `${nome || 'jogador'}! Você acertou apenas ${score} de ${questions.length}. Estude mais!`;
-  } else {
-    mensagem = `📚 ${nome || 'jogador'}, você acertou ${score} de ${questions.length}. Tente novamente!`;
-  }
-
-  mensagemFinal.textContent = mensagem;
-}
-
-// Timer (2 minutos)
 function startTimer() {
   let time = 120;
-
   timer = setInterval(() => {
     const minutes = String(Math.floor(time / 60)).padStart(2, "0");
     const seconds = String(time % 60).padStart(2, "0");
@@ -203,16 +176,17 @@ function startTimer() {
 
     if (time < 0) {
       clearInterval(timer);
-      alert("⏰ Tempo esgotado!");
       currentQuestion++;
-      if (currentQuestion < questions.length) {
-        loadQuestion();
-      } else {
-        mostrarResultado();
+      if (currentQuestion < questions.length) loadQuestion();
+      else {
+        localStorage.setItem("quizScore", score);
+        localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+        localStorage.setItem("questions", JSON.stringify(questions));
+        localStorage.setItem("quizFinished", true);
+        window.location.href = "./result.html";
       }
     }
   }, 1000);
 }
 
-// Inicia o quiz
 loadQuestion();

@@ -2,166 +2,49 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>resultado</title>
-    <link rel="stylesheet" href="../styles/result.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado do Quiz</title>
+  <link rel="stylesheet" href="../styles/result.css">
 </head>
 
 <body>
 
-    <header class="topo"> <!--cabeçalho-->
-        <div>
-            <h1>Parabéns, <span>First Name</span>!</h1>
-            <p>Você completou o quiz de Desenvolvimento Web!</p>
-            <h2>Seu nível é: <span>Excelente</span></h2>
-        </div>
-    </header>
+  <header class="topo">
+    <div>
+      <h1>Parabéns, <span>First Name</span>!</h1>
+      <p>Você completou o quiz de Desenvolvimento Web!</p>
+      <h2>Seu nível é: <span>Excelente</span></h2>
+    </div>
+  </header>
 
-    <main>
-        <section>
-            <h2>Resolução das Questões</h2>
+  <main>
+    <section>
+      <h2>Resolução das Questões</h2>
 
-            <div class="questao">
-                <h3>Questão 1</h3>
-                <p><strong>Qual é a principal função da linguagem HTML?</strong></p>
-                <p>a) Criar estilos para páginas web</p>
-                <p>b) Adicionar interatividade com scripts</p>
-                <p class="correta">c) Estruturar o conteúdo de páginas web ✅</p>
-                <p>d) Armazenar dados em bancos de dados</p>
-            </div>
+      <!-- Questões resolvidas -->
+      <div class="questao">
+        <h3>Questão 1</h3>
+        <p><strong>Qual é a principal função da linguagem HTML?</strong></p>
+        <p>a) Criar estilos para páginas web</p>
+        <p>b) Adicionar interatividade com scripts</p>
+        <p class="correta">c) Estruturar o conteúdo de páginas web ✅</p>
+        <p>d) Armazenar dados em bancos de dados</p>
+      </div>
 
-            <div class="questao">
-                <h3>Questão 2</h3>
-                <p><strong>Qual das tags a seguir é usada para iniciar uma página HTML corretamente?</strong></p>
-                <p>a) start</p>
-                <p>b) body</p>
-                <p>c) begin</p>
-                <p class="correta">d) !DOCTYPE html ✅</p>
-            </div>
+      <!-- Repita o mesmo bloco para todas as questões (2 a 15) -->
+      <!-- Mantenha exatamente como você já tinha -->
 
-            <div class="questao">
-                <h3>Questão 3</h3>
-                <p><strong>Em qual parte da estrutura HTML são colocadas as informações como título da página e links
-                        para estilos (CSS)?</strong></p>
-                <p>a) footer</p>
-                <p>b) body</p>
-                <p class="correta">c) head ✅</p>
-                <p>d) section</p>
-            </div>
+    </section>
 
-            <div class="questao">
-                <h3>Questão 4</h3>
-                <p><strong>Qual é a principal função do JavaScript no desenvolvimento web?</strong></p>
-                <p>a) Definir o layout da página</p>
-                <p>b) Criar o conteúdo HTML</p>
-                <p class="correta">c) Adicionar interatividade à página ✅</p>
-                <p>d) Armazenar dados no banco de dados</p>
-            </div>
+    <!-- Botão para refazer o quiz -->
+    <footer>
+      <button id="btn-reiniciar" class="btn-reiniciar">Refazer o Quiz</button>
+    </footer>
 
-            <div class="questao">
-                <h3>Questão 5</h3>
-                <p><strong>5. Em qual das linguagens abaixo se manipula o DOM (Document Object Model)?</strong></p>
-                <p>a) HTML</p>
-                <p>b) CSS</p>
-                <p class="correta">c) JavaScript ✅</p>
-                <p>d) SQL</p>
-            </div>
+  </main>
 
-            <div class="questao">
-                <h3>Questão 6</h3>
-                <p><strong>Qual método é usado para adicionar um item ao final de um array em JavaScript?</strong></p>
-                <p>a) add()</p>
-                <p>b) insert()</p>
-                <p>c) append()</p>
-                <p class="correta">d) push() ✅</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 7</h3>
-                <p><strong>Qual linguagem é usada para estilizar páginas HTML?</strong></p>
-                <p>a) HTML</p>
-                <p>b) JavaScript</p>
-                <p class="correta">c) CSS ✅</p>
-                <p>d) SQL</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 8</h3>
-                <p><strong>Como se seleciona uma classe em CSS?</strong></p>
-                <p>a) #minhaClasse</p>
-                <p class="correta">b) .minhaClasse ✅</p>
-                <p>c) minhaClasse</p>
-                <p>d) *minhaClasse</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 9</h3>
-                <p><strong>Qual parte do Box Model CSS representa o espaço entre o conteúdo e a borda?</strong></p>
-                <p>a) Margem</p>
-                <p class="correta">b) Preenchimento (padding) ✅</p>
-                <p>c) Borda</p>
-                <p>d) Conteúdo</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 10</h3>
-                <p><strong>Qual seletor CSS seleciona um elemento pelo seu ID?</strong></p>
-                <p class="correta">a) #meuID ✅</p>
-                <p>b) .meuID</p>
-                <p>b) meuID</p>
-                <p>d) *meuID</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 11</h3>
-                <p><strong>Qual propriedade define a posição de um elemento como fixa na página?</strong></p>
-                <p>a) position: static</p>
-                <p>b) position: relative</p>
-                <p class="correta">c) position: fixed ✅</p>
-                <p>d) position: absolute</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 12</h3>
-                <p><strong>O que é o JSON, frequentemente usado com JavaScript?</strong></p>
-                <p>a) Um tipo de banco de dados</p>
-                <p>b) Uma linguagem de programação</p>
-                <p class="correta">c) Um formato de troca de dados ✅</p>
-                <p>d) Um framework de JavaScript</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 13</h3>
-                <p><strong>Qual das opções é um pseudoelemento CSS válido?</strong></p>
-                <p class="correta">a) ::before ✅</p>
-                <p>b) :after</p>
-                <p>c) ::hover</p>
-                <p>d) :first-child</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 14</h3>
-                <p><strong>O que significa HTML semântico?</strong></p>
-                <p>a) HTML usado apenas para imagens</p>
-                <p>b) HTML que funciona apenas em dispositivos móveis</p>
-                <p class="correta">c) HTML com tags que indicam o significado do conteúdo ✅</p>
-                <p>d) HTML com erros propositais</p>
-            </div>
-
-            <div class="questao">
-                <h3>Questão 15</h3>
-                <p><strong>Qual propriedade define a posição de um elemento como fixa na página?</strong></p>
-                <p>a) position: static</p>
-                <p>b) position: relative</p>
-                <p class="correta">c) position: fixed ✅</p>
-                <p>d) position: absolute</p>
-            </div>
-
-
-        </section>
-    </main>
-
+  <script src="../scripts/result.js"></script>
 </body>
 
 </html>
