@@ -11,9 +11,9 @@ body {
 
 .card-quiz {
   background: #ffffff10;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 6px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
   padding: 60px 60px;
   text-align: center;
   width: 320px;
@@ -57,12 +57,18 @@ input {
  font-size: 1rem;
  color: #000000;
  transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+ transition: transform 0.3s ease;
 }
 
 .input-error {
   border: 2px solid #ff5252;
   background-color: #ffe6e6;
 }
+
+input:hover {
+  transform: scale(1.02);
+}
+
 
 button {
   width: 75%;
