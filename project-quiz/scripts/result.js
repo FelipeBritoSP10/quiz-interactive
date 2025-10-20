@@ -36,13 +36,12 @@ questions.forEach((q, i) => {
   const acertou = userAnswer === q.correct;
 
   const questaoDiv = document.createElement("div");
-  questaoDiv.classList.add("questao");
-  questaoDiv.classList.add(acertou ? "acertou" : "errou");
+  questaoDiv.classList.add("questao", acertou ? "acertou" : "errou");
 
   questaoDiv.innerHTML = `
     <h3>${q.title}</h3>
     <p>${q.text}</p>
-    <p>Seu palpite: ${acertou ? "✅ " : "❌ "} ${userAnswer}</p>
+    <p>Seu palpite: ${acertou ? "✅" : "❌"} ${userAnswer}</p>
     ${!acertou ? `<p>Resposta correta: ${q.correct}</p>` : ""}
   `;
 
@@ -55,5 +54,7 @@ botaoReiniciar.addEventListener("click", () => {
   localStorage.removeItem("userAnswers");
   localStorage.removeItem("questions");
   localStorage.removeItem("quizFinished");
-  window.location.href = "./index.html";
+  
+  // Redireciona para a página do quiz
+  window.location.href = "./quiz.html";
 });
