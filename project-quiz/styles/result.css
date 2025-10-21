@@ -8,7 +8,7 @@ body {
 
 .topo {
     text-align: center;
-    background: #4CAF50;
+    background:rgb(54, 162, 235);
     color: #fff;
     padding: 40px 20px;
     border-radius: 10px;
@@ -20,6 +20,12 @@ body {
 .topo h2 span {
     font-size: 1.2em;
     font-weight: bold;
+}
+
+#chart {
+  max-width: 300px;
+  max-height: 300px;
+  margin: 0 auto;
 }
 
 main {

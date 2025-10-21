@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultado do Quiz</title>
+    <link rel="stylesheet" href="../styles/result.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resultado do Quiz</title>
-  <link rel="stylesheet" href="../styles/result.css">
-</head>
-
-<body>
-
-  <header class="topo">
-    <div>
-      <h1>Parabéns, <span>First Name</span>!</h1>
-      <p>Você completou o quiz de Desenvolvimento Web!</p>
-      <h2>Seu nível é: <span>Excelente</span></h2>
-    </div>
-  </header>
-
-  <main>
-    <section>
-      <h2>Resolução das Questões</h2>
-
-      <!-- Questões resolvidas -->
-      <div class="questao">
-        <h3>Questão 1</h3>
-        <p><strong>Qual é a principal função da linguagem HTML?</strong></p>
-        <p>a) Criar estilos para páginas web</p>
-        <p>b) Adicionar interatividade com scripts</p>
-        <p class="correta">c) Estruturar o conteúdo de páginas web ✅</p>
-        <p>d) Armazenar dados em bancos de dados</p>
+  <body>
+    <header class="topo">
+      <div>
+        <h1>Parabéns, <span>First Name</span>!</h1>
+        <p>Você completou o quiz de Desenvolvimento Web!</p>
+        <h2>Seu nível é: <span>Excelente</span></h2>
+        <div>
+          <canvas id="chart"></canvas>
+        </div>
       </div>
+    </header>
 
-      <!-- Repita o mesmo bloco para todas as questões (2 a 15) -->
-      <!-- Mantenha exatamente como você já tinha -->
+    <main>
+      <section>
+        <h2>Resolução das Questões</h2>
 
-    </section>
+        <!-- Questões resolvidas -->
+        <div class="questao">
+          <h3>Questão 1</h3>
+          <p><strong>Qual é a principal função da linguagem HTML?</strong></p>
+          <p>a) Criar estilos para páginas web</p>
+          <p>b) Adicionar interatividade com scripts</p>
+          <p class="correta">c) Estruturar o conteúdo de páginas web ✅</p>
+          <p>d) Armazenar dados em bancos de dados</p>
+        </div>
 
-    <!-- Botão para refazer o quiz -->
-    <footer>
-      <button id="btn-reiniciar" class="btn-reiniciar">Refazer o Quiz</button>
-    </footer>
+        <!-- Repita o mesmo bloco para todas as questões (2 a 15) -->
+        <!-- Mantenha exatamente como você já tinha -->
+      </section>
 
-  </main>
+      <!-- Botão para refazer o quiz -->
+      <footer>
+        <button id="btn-reiniciar" class="btn-reiniciar">Refazer o Quiz</button>
+      </footer>
+    </main>
 
-  <script src="../scripts/result.js"></script>
-</body>
-
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../scripts/result.js"></script>
+  </body>
 </html>
