@@ -1,5 +1,7 @@
 # Quiz Interativo
 
+![preview](./preview-quiz.gif)
+
 ## 📝 Visão Geral
 O **Quiz Interativo** é um projeto desenvolvido com HTML, CSS e JavaScript puro, criado para demonstrar a construção de um sistema dinâmico de perguntas e respostas. 
 O projeto mostra na prática o uso de **eventos**, **arrays de objetos**, **manipulação do DOM** e **lógica condicional**, proporcionando uma experiência interativa e intuitiva para o usuário. Este projeto é ideal para quem deseja aprender ou mostrar habilidades em desenvolvimento web front-end.
@@ -62,6 +64,8 @@ O projeto `quiz-interactive` está organizado da seguinte forma:
    ```
    ```bash
    code .
+   ```
+
 3. **Abra o arquivo HTML principal**:
    - Inicie com `homepage.html` clicando duas vezes ou use um servidor local (recomendado para evitar erros de CORS, como Live Server no VS Code).
    - Navegue entre `quiz.html` e `result.html` conforme o fluxo do jogo.
@@ -72,10 +76,11 @@ O projeto `quiz-interactive` está organizado da seguinte forma:
 
 ## 🤝 Contribuidores
 
-- **Autores**: Felipe Brito, Brenno Souza e Jonh
+- **Autores**: 
+Felipe Brito, Brenno Souza e Jonh
 - **GitHub**: 
    - [FelipeBritoSP10](https://github.com/FelipeBritoSP10)
-   - [Brennodeveloper](https://github.com/brennodeveloper)
+   - [brennodeveloper](https://github.com/brennodeveloper)
    - [mayko-john](https://github.com/mayko-john)
 
 - **Data de Criação**: Outubro de 2025
