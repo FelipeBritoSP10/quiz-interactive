@@ -1,6 +1,6 @@
 # Quiz Interativo
 
-![preview](./project-quiz/preview-quiz.gif)
+![preview](./project-quiz/docs/preview-quiz.gif)
 
 ## 📝 Visão Geral
 O **Quiz Interativo** é um projeto desenvolvido com HTML, CSS e JavaScript puro, criado para demonstrar a construção de um sistema dinâmico de perguntas e respostas. 
